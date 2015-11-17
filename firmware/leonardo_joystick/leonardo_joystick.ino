@@ -1,11 +1,12 @@
 /*
   Leonardo Joystick
-  
+
+  Use Leonardo to create 3-button arcade joystick.
 
   created 2015
   by Kaj Schmidt <http://www.kajschmidt.se>
 
-  Instructions for joystick lib: http://www.instructables.com/id/Add-USB-Game-Controller-to-Arduino-LeonardoMicro/
+  Instructions for joystick lib/settings: http://www.instructables.com/id/Add-USB-Game-Controller-to-Arduino-LeonardoMicro/
  */
 
 int up_pin = 3;
@@ -38,7 +39,7 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  //Check buttons
   for (int x = 0; x < 3; x++) { //Check buttons
     if(digitalRead(b_pins[x]) == LOW && b_states[x] == LOW) { // Holding
 
@@ -55,6 +56,7 @@ void loop() {
     }
   }
 
+  //Check joystick
   if (digitalRead(dw_pin) == LOW) { //check down
     Joystick.setYAxis(-127);
   }
